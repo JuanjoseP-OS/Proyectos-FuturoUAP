@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Web Profesional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primario: #3498db;
+      --color-secundario: #2ecc71;
+      --color-fondo: #fff;
+      --color-texto: #000;
+      --color-titulo: #000;
+      --color-fondo-oscuro: #2c3e50;
+      --color-texto-oscuro: #ecf0f1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--color-fondo);
+      color: var(--color-texto);
+      line-height: 1.6;
+    }
+
+    body[data-theme="dark"] {
+      background-color: var(--color-fondo-oscuro);
+      color: var(--color-texto-oscuro);
+    }
+
+    header {
+      background-color: var(--color-primario);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+
+    header.sticky {
+      background-color: var(--color-secundario);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5rem;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ecf0f1;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('https://via.placeholder.com/1500');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      padding: 0 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      color: var(--color-titulo);
+      margin-bottom: 1rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .hero button {
+      padding: 0.75rem 2rem;
+      background-color: var(--color-secundario);
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      animation: fadeIn 4s ease-in-out;
+    }
+
+    .hero button:hover {
+      background-color: #27ae60;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 3rem 2rem;
+    }
+
+    .service-card {
+      background-color: #f8f8f8;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .service-card i {
+      font-size: 2.5rem;
+      color: var(--color-secundario);
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--color-titulo);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .service-card p {
+      font-size: 1rem;
+      color: var(--color-texto);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 3rem 2rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: var(--color-primario);
+      color: #fff;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .toggle-container {
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      cursor: pointer;
+    }
+
+    .toggle-container input {
+      display: none;
+    }
+
+    .toggle-container label {
+      background-color: #bdc3c7;
+      padding: 10px;
+      border-radius: 25px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .toggle-container label span {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .testimonials {
+      padding: 3rem 2rem;
+      background-color: #f8f8f8;
+      text-align: center;
+    }
+
+    .testimonials blockquote {
+      font-size: 1.2rem;
+      margin: 1.5rem auto;
+      max-width: 800px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    /* Animación de entrada */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Modo Oscuro Toggle -->
+  <div class="toggle-container">
+    <input type="checkbox" id="theme-toggle">
+    <label for="theme-toggle">
+      <span>🌞</span>
+      <span>🌙</span>
+    </label>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#gallery">Galería</a></li>
+        <li><a href="#testimonials">Testimonios</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div>
+      <h1>Bienvenidos a Nuestro Sitio</h1>
+      <p>Descubre lo que podemos hacer por ti</p>
+      <button>Contáctanos</button>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="services" class="services">
+    <div class="service-card">
+      <i class="fas fa-cogs"></i>
+      <h3>Desarrollo Web</h3>
+      <p>Creación de sitios web responsivos y modernos para tu negocio.</p>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-paint-brush"></i>
+      <h3>Diseño Gráfico</h3>
+      <p>Diseños visuales atractivos y únicos para tu marca.</p>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-search"></i>
+      <h3>SEO</h3>
+      <p>Optimización para motores de búsqueda para aumentar tu visibilidad online.</p>
+    </div>
+  </section>
+
+  <!-- Galería -->
+  <section id="gallery" class="gallery">
+    <img src="https://cdn.pixabay.com/photo/2019/10/09/07/28/development-4536630_640.png" alt="Imagen 1">
+    <img src="https://www.esdip.com/wp-content/uploads/2023/07/boceto-de-proyecto-de-carteleria.jpg" alt="Imagen 2">
+    <img src="https://onlinezebra.com/wp-content/uploads/2024/10/webinar-seo-oz-opt.webp" alt="Imagen 3">
+    <img src="https://b2bactiva.com/wp-content/uploads/2024/11/%C2%BFQue-es-el-marketing-digital-Marketing-digital.jpg" alt="Imagen 4">
+  </section>
+
+  <!-- Testimonios -->
+  <section id="testimonials" class="testimonials">
+    <blockquote>
+      "¡Excelente servicio! Muy recomendados."
+      <footer>- Cliente Feliz</footer>
+    </blockquote>
+    <blockquote>
+      "Trabajo profesional y muy creativo. ¡Gracias!"
+      <footer>- Empresario Satisfecho</footer>
+    </blockquote>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Mi Sitio Web</p>
+    <div>
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+    </div>
+  </footer>
+
+  <script>
+    // Modo oscuro toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('change', () => {
+      if (themeToggle.checked) {
+        document.body.setAttribute('data-theme', 'dark');
+      } else {
+        document.body.removeAttribute('data-theme');
+      }
+    });
+
+    // Barra de navegación sticky
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('sticky');
+      } else {
+        header.classList.remove('sticky');
+      }
+    });
+  </script>
+</body>
+</html>
